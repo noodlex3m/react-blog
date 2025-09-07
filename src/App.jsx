@@ -3,16 +3,22 @@ import HomePage from "./pages/HomePage.jsx";
 import PostsPage from "./pages/PostsPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import PostDetailPage from "./pages/postDetailPage.jsx";
+import { useTheme } from "./context/ThemeContext.jsx";
 
 function App() {
+	const { theme, toggleTheme } = useTheme();
+
 	return (
-		<div>
+		<div className={`app ${theme}`}>
 			<header>
 				<nav>
 					<Link to="/">Головна</Link>
 					<Link to="/posts">Статті</Link>
-					<Link to="/about">Про</Link>
+					<Link to="/about">Про мене</Link>
 				</nav>
+				<button onClick={toggleTheme}>
+					Переключити на {theme === "light" ? "темну" : "світлу"} тему
+				</button>
 			</header>
 			<hr />
 
